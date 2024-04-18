@@ -12,35 +12,13 @@ console.log(
   )
 );
 
-//while (conditions) {
-// let addTask = await inquirer.prompt([
-//{
-// name: "task",
-//type: "input",
-// message: chalk.blue.italic("Enter Your New Task :")
-//}
-
-// ]);
-//todoList.push(addTask.task);
-//console.log(`${addTask.task} Task added in Todo-List successfully`);
-//let addMoreTask = await inquirer.prompt([
-//  {
-//    name: "addmore",
-//  type: "confirm",
-//message: "Do You Want to Add More Task ?",
-//default: chalk.bgCyan("False")
-//}
-//]);
-//conditions = addMoreTask.addmore;
-//}
-
 let main = async () => {
   while (conditions) {
     let option = await inquirer.prompt([
       {
         name: "choice",
         type: "list",
-        message:chalk.green("Select An Option You Want To Do:"),
+        message: chalk.green("Select An Option You Want To Do:"),
         choices: [
           "Add Task",
           "Delete Task",
@@ -70,7 +48,7 @@ let addTask = async () => {
     {
       name: "task",
       type: "input",
-      message:chalk.redBright( "Enter Your New Task:"),
+      message: chalk.redBright("Enter Your New Task:"),
     },
   ]);
   todoList.push(newTask.task);
@@ -92,7 +70,9 @@ let deleteTask = async () => {
     {
       name: "index",
       type: "number",
-      message:chalk.magenta ("Enter the 'Index No.' of the Task you Want to Delete:"),
+      message: chalk.magenta(
+        "Enter the 'Index No.' of the Task you Want to Delete:"
+      ),
     },
   ]);
   let deletedTask = todoList.splice(taskIndex.index - 1, 1);
@@ -108,17 +88,21 @@ let updateTask = async () => {
     {
       name: "index",
       type: "number",
-      message:chalk.yellowBright("Enter the Index Of the Task you Want to Update:"),
+      message: chalk.yellowBright(
+        "Enter the Index Of the Task you Want to Update:"
+      ),
     },
     {
       name: "new_task",
       type: "input",
-      message:chalk.greenBright ("Now Enter New Task Name:"),
+      message: chalk.greenBright("Now Enter New Task Name:"),
     },
   ]);
   todoList[update_task_index.index - 1] = update_task_index.new_task;
   console.log(
-    `\n Task at index no. ${update_task_index.index - 1} updated successfully [For updated list check option: "View Todo-List"]`
+    `\n Task at index no. ${
+      update_task_index.index - 1
+    } updated successfully [For updated list check option: "View Todo-List"]`
   );
 };
 
